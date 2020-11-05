@@ -1,32 +1,25 @@
 * {
     margin:0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.randomtext__generator {
+.generated__text{
     display: flex;
-    justify-content: center;
-    margin: 40px 40px 20px 40px; 
-}
-
-.randomtext__generator p {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0.5em;
-    border-radius: 0.5em;
     font-size: 1.5em;
+    flex-wrap: wrap;
+    margin: 40px 40px 20px 40px;
     pointer-events: none;
-    user-select: none;
+    user-select: none;   
 }
 
-.randomtext__generator  p  span {
-    margin-bottom: 5px;
+.generated__text span {
+    display: block;
+    padding-left: 10px;
 }
 
 .user__typedtext{
     display: flex;
-    justify-content: center;
+    justify-content: center;   
 }
 
 .user__typedtext input {
