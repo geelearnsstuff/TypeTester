@@ -14,7 +14,7 @@
 
 .generated__text span {
     display: block;
-    padding-left: 10px;
+    padding: 0 5px;
 }
 
 .user__typedtext{
@@ -30,5 +30,23 @@
     width: 300px;
     height: 30px;
     font-size: 1.5em;
+}
+
+.word-active {
+    background-color: rgb(214, 214, 214);
+    border-radius: 3px;
+
+}
+
+.word-correct {
+    /* background-color: rgb(61, 255, 61);
+    border-radius: 5px; */
+    color: rgb(0, 236, 0);
+}
+
+.word-wrong {
+    /* background-color: rgb(255, 32, 32);
+    border-radius: 5px; */
+    color: rgb(255, 32, 32);
 }
 

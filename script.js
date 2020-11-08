@@ -6,6 +6,7 @@ let randArr = ['go', 'know', 'were', 'than', 'time', 'person', 'year', 'way', 'd
 
 let randNum = 0;
 let spanElement;
+let inputField = document.getElementById('text__ip2')
 
 for (let i = 0; i < randArr.length; i++) {
     randNum = Math.floor(Math.random() * randArr.length);
@@ -16,36 +17,51 @@ for (let i = 0; i < randArr.length; i++) {
     genText.appendChild(spanElement)
 }
 
+let curSpan = document.querySelector('span')
+curSpan.className = "word-active"
+let curWord = curSpan.innerHTML;
+let correctWordCount = 0, wrongWordCount = 0, curIndex = 0;
 
 function userInputChanged(event) {
-
-    console.log(event.data)
-    console.log(event.target)
-    console.log(event.target.value)
-
+    let curKey = event.key
     let typedWord;
-
-    document.addEventListener('keyup', e => {
-        if (e.code === 'Space') {
-            typedWord = event.target.value;
-        }
-
-
-    })
-
-    if (keyPressed === " ") {
+    if (curKey === " ") {
         typedWord = event.target.value.trim();
+        checkInput(typedWord);
+        event.target.value = ''
+        curIndex++;
+        findCurWord(curIndex)
     }
-
 }
 
+function checkInput(inputWord) {
+    if (inputWord === curWord) {
+        curSpan.className = "word-correct";
+        correctWordCount++;
+    } else {
+        curSpan.className = "word-wrong";
+        wrongWordCount++;
+    }
+}
 
+function findCurWord(Index) {
+    let totalSpans = document.querySelectorAll('span');
+    if (totalSpans.length !== curIndex) {
+        curSpan = totalSpans[Index];
+        curSpan.className = "word-active";
+        curWord = curSpan.innerHTML;
+        return curWord;
+    } else {
+        printResults()
+    }
+}
 
-// console.log(genText.children)
-// function highlightWord(index) {
-//     if (index > 0) {
-//         genText.children[index - 1].className = "word";
-//     }
+function printResults() {
+    let results = document.getElementById("results");
+    let para = document.createElement("p");
+    para.innerText = `Correct Words : ${correctWordCount} Wrong Words : ${wrongWordCount}`;
+    results.appendChild(para)
+    inputField.disabled = true;
+}
 
-// }
 
