@@ -4,11 +4,19 @@
 <head>
 	<link rel="stylesheet" href="style.css">
 	</link>
-	<title>TypeTester</title>
+	<title>geetypewriter</title>
 
 </head>
 
 <body>
+	<div class="main__header">
+		<h1>geetypewriter</h1>
+	</div>
+
+	<div>
+		<p id="counter__timer" class="timer"></p>
+	</div>
+
 	<div class="type__content">
 
 		<div class="generated__text" id="gen__text">
@@ -17,7 +25,10 @@
 		<div class="user__typedtext">
 			<input onkeyup="userInputChanged(event)" id="text__ip2" type="text" />
 		</div>
+
 	</div>
+
+
 
 	<div id="results">
 
