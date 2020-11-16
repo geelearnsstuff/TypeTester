@@ -22,12 +22,19 @@ check for match
 
 **PHASE 4
 ---
-1. Style the whole website layout
-2. implement Reset functionality
-3. implement 60second timer
-4. calculate words per minute
-5. hide the input when the timer ends
-6. when page reloads automatically put focus in the input field
+1. Style the whole website layout - DONE
+2. implement Reset functionality - DONE
+3. implement 60second timer - DONE
+4. when page reloads automatically put focus in the input field - DONE
+
+**PHASE 5
+---
+1. Add multiple timer options
+2. calculate words per minute
+3. Display only part of whole content - DONE
+4. Scroll content when one line is completed
+
+
 
 
 
@@ -36,5 +43,5 @@ check for match
 1. Find a better way to store all the words
 2. First letter not printing right..,
 3. Implement themes maybe?(Checkout MDN if statement Documentation you have a simple example at the end.)
-
+4. Check back at resetting only the necessary containers instead of whole page
 */

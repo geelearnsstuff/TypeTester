@@ -8,8 +8,7 @@
 .main__header {
     display: flex;
     justify-content: center;
-    margin: 20px;
-
+    margin-top: 10px;
 }
 
 .main__header > h1 {
@@ -17,15 +16,30 @@
 
 }
 
+.type__content{
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:auto;
+    padding: 2rem;
+}
 
-
-.generated__text{
+.generated__text p{
     display: flex;
     font-size: 1.5em;
     flex-wrap: wrap;
     margin: 40px 40px 20px 40px;
     pointer-events: none;
     user-select: none;   
+    margin-top: 0px;
+    margin-bottom: 20px;
+    height: 110px;
+    overflow: hidden;
+    line-height: 1.6em;
+    border: 1px solid #464646;
+    border-radius: 4px;
+    padding: 10px;
 }
 
 .generated__text span {
@@ -47,6 +61,29 @@
     height: 30px;
     font-size: 1.5em;
     color: white;
+}
+
+.btn__reset{
+    display: flex;
+    justify-content: center;
+    margin: 40px 40px 20px 40px;
+}
+
+.btn__reset > button {
+    border: none;
+    padding: 1em;
+    color: rgb(34, 34, 34);
+    background: rgb(110, 110, 110);
+    border-radius: 0.5em;
+    font-weight: 600;
+    font-size:1.1em ;
+    cursor: pointer;
+    outline-style: none;   
+}
+
+.btn__reset > button:hover {
+    background: rgb(34, 34, 34);
+    color: rgb(170, 170, 170);
 }
 
 .word-active {

@@ -9,30 +9,36 @@
 </head>
 
 <body>
-	<div class="main__header">
-		<h1>geetypewriter</h1>
-	</div>
+	<div class='center__content'>
 
-	<div>
-		<p id="counter__timer" class="timer"></p>
-	</div>
-
-	<div class="type__content">
-
-		<div class="generated__text" id="gen__text">
+		<div class="main__header">
+			<h1>geetypewriter</h1>
 		</div>
 
-		<div class="user__typedtext">
-			<input onkeyup="userInputChanged(event)" id="text__ip2" type="text" />
+		<div class="type__content">
+
+			<div>
+				<p id="counter__timer" class="timer">Hi</p>
+			</div>
+
+			<div class="generated__text" id="gen__text">
+			</div>
+
+			<div class="user__typedtext">
+				<input onkeyup="userInputChanged(event)" id="text__ip2" type="text" />
+			</div>
+
+			<div class="btn__reset">
+				<button id="reset__btn">Reset</button>
+			</div>
+
 		</div>
 
+		<div id="results">
+
+		</div>
 	</div>
 
-
-
-	<div id="results">
-
-	</div>
 
 	<script src="script.js" defer></script>
 </body>
