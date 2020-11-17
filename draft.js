@@ -32,7 +32,9 @@ check for match
 1. Add multiple timer options
 2. calculate words per minute
 3. Display only part of whole content - DONE
-4. Scroll content when one line is completed
+4. Implement End of line detection - DONE
+5. put the Generated text in one fixed area -  DONE
+6. Generate Text on Demand
 
 
 
