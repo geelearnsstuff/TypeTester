@@ -3,10 +3,11 @@ let randArr = ['go', 'know', 'were', 'than', 'time', 'person', 'year', 'way', 'd
 let randomText = document.getElementById("random__text");
 let genText = document.getElementById("gen__text")
 let randNum = 0;
-let spanElement, paraTag, curSpan, curWord;
+let spanElement, paraTag, curSpan, nextSpan, curWord, totalSpans, curTopPos, prevSpan, prevTopPos;
 let correctWordCount, wrongWordCount, curIndex;
 let inputField = document.getElementById('text__ip2');
-let counter = document.getElementById("counter__timer")
+let counter = document.getElementById("counter__timer");
+let completedSpans = [];
 
 generateText();
 initialiseTest();
@@ -14,6 +15,7 @@ initialiseTimer();
 
 function generateText() {
     paraTag = document.createElement("p");
+    paraTag.id = "para__spans"
     genText.appendChild(paraTag)
     for (let i = 0; i < randArr.length; i++) {
         randNum = Math.floor(Math.random() * randArr.length);
@@ -30,18 +32,38 @@ function initialiseTest() {
     curSpan.className = "word-active"
     curWord = curSpan.innerHTML;
     correctWordCount = 0; wrongWordCount = 0; curIndex = 0;
+    prevSpan = curSpan;
+    curTopPos = curSpan.offsetTop;
+    prevTopPos = prevSpan.offsetTop;
+
 }
 
 
 function userInputChanged(event) {
     let curKey = event.key
     let typedWord;
+
     if (curKey === " ") {
         typedWord = event.target.value.trim();
         checkInput(typedWord);
-        event.target.value = ''
+        event.target.value = '';
+
+        console.log(prevSpan)
+
+        completedSpans.push(curSpan);
         curIndex++;
         findCurWord(curIndex)
+
+        console.log(curSpan)
+
+
+        console.log(prevSpan.offsetTop, curSpan.offsetTop)
+
+        if (curTopPos > prevTopPos) {
+            moveUp()
+        }
+        prevSpan = curSpan;
+        prevTopPos = prevSpan.offsetTop;
     }
 }
 
@@ -55,14 +77,23 @@ function checkInput(inputWord) {
     }
 }
 
+
+totalSpans = document.querySelectorAll('span');
+
+
 function findCurWord(Index) {
-    let totalSpans = document.querySelectorAll('span');
     if (totalSpans.length !== curIndex) {
         curSpan = totalSpans[Index];
         curSpan.className = "word-active";
+        curTopPos = curSpan.offsetTop;
         curWord = curSpan.innerHTML;
         return curWord;
     }
+}
+
+function moveUp() {
+    completedSpans.forEach((span) => paraTag.removeChild(span))
+    completedSpans = [];
 }
 
 function printResults() {
@@ -80,36 +111,6 @@ function initialiseTimer() {
 }
 
 
-//test timer
-function startTimer(seconds) {
-    let sec = seconds;
-    let mins = sec > 60 ? sec / 60 : 0;
-    let cur_mins;
-
-    function tick() {
-        if (sec > 60) {
-            cur_mins = mins - 1;
-        }
-        sec--;
-        // counter.innerHTML = "00 : " + (sec < 10 ? "0" : "") + sec.toString();
-        counter.innerHTML = "00 : " + (sec < 10 ? "0" : "") + sec.toString();
-
-        (mins > 1 ? ("0" + cur_mins + ":") : ("00 : "))
-
-        console.log(sec)
-
-        if (sec > 0) {
-            setTimeout(tick, 1000) //evaluate expression for every 1000ms or 1 sec
-        } else {
-
-            printResults()
-        }
-    }
-
-    tick();
-}
-
-
 function startTimer(seconds) {
     inputField.removeEventListener('keyup', startTimer)
     let sec = 60;
@@ -124,8 +125,6 @@ function startTimer(seconds) {
         sec--;
         // counter.innerHTML = "00 : " + (sec < 10 ? "0" : "") + sec.toString();
         counter.innerHTML = (mins > 1 ? ("0" + cur_mins + ":" + ((sec < 10 ? "0" : "") + sec.toString())) : ((sec < 10 ? "0" : "") + sec.toString()))
-
-        console.log(sec)
 
         if (sec > 0) {
             setTimeout(tick, 1000) //evaluate expression for every 1000ms or 1 sec
@@ -151,11 +150,9 @@ let btn_reset = document.getElementById("reset__btn")
 btn_reset.addEventListener('click', function () {
 
     window.location.reload();
-
 });
 
-
-
+//End line detection
 
 
 

@@ -25,21 +25,20 @@
     padding: 2rem;
 }
 
-.generated__text p{
+.generated__text p {
     display: flex;
     font-size: 1.5em;
     flex-wrap: wrap;
     margin: 40px 40px 20px 40px;
-    pointer-events: none;
     user-select: none;   
     margin-top: 0px;
     margin-bottom: 20px;
     height: 110px;
-    overflow: hidden;
     line-height: 1.6em;
     border: 1px solid #464646;
     border-radius: 4px;
     padding: 10px;
+   overflow: hidden;       
 }
 
 .generated__text span {
