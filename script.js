@@ -9,15 +9,17 @@ let inputField = document.getElementById('text__ip2');
 let counter = document.getElementById("counter__timer");
 let completedSpans = [];
 
+//Loading all the required stuff for the Test
 generateText();
 initialiseTest();
 initialiseTimer();
 
+//Generating the text for the test from the random word Array
 function generateText() {
     paraTag = document.createElement("p");
     paraTag.id = "para__spans"
     genText.appendChild(paraTag)
-    for (let i = 0; i < randArr.length; i++) {
+    for (let i = 0, j = randArr.length; i < 15 * j; i++) {
         randNum = Math.floor(Math.random() * randArr.length);
         // newRandArr.push(randArr[randNum])
         spanElement = document.createElement("span");
@@ -27,6 +29,7 @@ function generateText() {
     }
 }
 
+//Initialising all the values when the test loads
 function initialiseTest() {
     curSpan = document.querySelector('span')
     curSpan.className = "word-active"
@@ -38,35 +41,41 @@ function initialiseTest() {
 
 }
 
-
+//Checks for userinput and takes the whole word when space is hit
 function userInputChanged(event) {
     let curKey = event.key
     let typedWord;
 
     if (curKey === " ") {
+        //trimming the target word
         typedWord = event.target.value.trim();
+
+        //checks and marks the typed word right or wrong
         checkInput(typedWord);
+
+        //clear the input field
         event.target.value = '';
 
-        console.log(prevSpan)
-
+        //Adding spans into completedSpans array after the check
         completedSpans.push(curSpan);
+
+        //Incrementing Index and finding the current highlighted word.
         curIndex++;
         findCurWord(curIndex)
 
-        console.log(curSpan)
-
-
-        console.log(prevSpan.offsetTop, curSpan.offsetTop)
-
+        /* Line Detection Implementation: Finding the current span top position and comparing with prev span top position and removing them from the completed spans array in moveUp function.*/
         if (curTopPos > prevTopPos) {
             moveUp()
+
         }
+
+        //keeping track of prevSpans
         prevSpan = curSpan;
         prevTopPos = prevSpan.offsetTop;
     }
 }
 
+//Checking the inputword and marking right or wrong
 function checkInput(inputWord) {
     if (inputWord === curWord) {
         curSpan.className = "word-correct";
@@ -77,10 +86,10 @@ function checkInput(inputWord) {
     }
 }
 
-
+//Caching all the spans inside paragraph Tag
 totalSpans = document.querySelectorAll('span');
 
-
+//Finding the Current word and Highlighting
 function findCurWord(Index) {
     if (totalSpans.length !== curIndex) {
         curSpan = totalSpans[Index];
@@ -91,11 +100,13 @@ function findCurWord(Index) {
     }
 }
 
+//Moving up when end of line is detected.
 function moveUp() {
     completedSpans.forEach((span) => paraTag.removeChild(span))
     completedSpans = [];
 }
 
+//printing the results when the timer ends
 function printResults() {
     let results = document.getElementById("results");
     let para = document.createElement("p");
@@ -105,12 +116,12 @@ function printResults() {
     inputField.disabled = true;
 }
 
-
+//Adding an event listener to the input field when the page loads
 function initialiseTimer() {
     inputField.addEventListener('keyup', startTimer)
 }
 
-
+//Starting the timer and removing the start timer event 
 function startTimer(seconds) {
     inputField.removeEventListener('keyup', startTimer)
     let sec = 60;
@@ -138,7 +149,7 @@ function startTimer(seconds) {
     tick();
 }
 
-
+//TODO: Restarting test functionaly has to be Revisited
 let btn_reset = document.getElementById("reset__btn")
 // btn_reset.addEventListener('click', function () {
 //     inputField.focus();
@@ -152,7 +163,6 @@ btn_reset.addEventListener('click', function () {
     window.location.reload();
 });
 
-//End line detection
 
 
 
