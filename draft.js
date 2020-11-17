@@ -29,12 +29,17 @@ check for match
 
 **PHASE 5
 ---
+1. Display only part of whole content - DONE
+2. Implement End of line detection - DONE
+3. put the Generated text in one fixed area -  DONE
+4. Generate Text on Demand - DONE (added a multiplier to the Array length)
+5. Add comments to all the functions - DONE
+
+**PHASE 6
+---
 1. Add multiple timer options
 2. calculate words per minute
-3. Display only part of whole content - DONE
-4. Implement End of line detection - DONE
-5. put the Generated text in one fixed area -  DONE
-6. Generate Text on Demand
+3. work on showing results properly
 
 
 
