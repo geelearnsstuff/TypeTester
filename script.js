@@ -9,6 +9,7 @@ let correctWordCount, wrongWordCount, curIndex;
 let inputField = document.getElementById('text__ip2');
 let counter = document.getElementById("counter__timer");
 let completedSpans = [];
+let keyPressed, typedWord;
 
 //Loading all the required stuff for the Test
 generateText();
@@ -36,19 +37,18 @@ function initialiseTest() {
     curSpan.className = "word-active"
     curWord = curSpan.innerHTML;
     correctWordCount = 0; wrongWordCount = 0; curIndex = 0;
+    //Pointers to keep track of word positions to detect end of line.
     prevSpan = curSpan;
     curTopPos = curSpan.offsetTop;
     prevTopPos = prevSpan.offsetTop;
-
 }
 
 //Checks for userinput and takes the whole word when space is hit
 function userInputChanged(event) {
-    let curKey = event.key
-    let typedWord;
+    keyPressed = event.key
 
-    if (curKey === " ") {
-        //trimming the target word
+    if (keyPressed === " ") {
+        //trimming the target word as the space is included at the end of input
         typedWord = event.target.value.trim();
 
         //checks and marks the typed word right or wrong
@@ -57,7 +57,7 @@ function userInputChanged(event) {
         //clear the input field
         event.target.value = '';
 
-        //Adding spans into completedSpans array after the check
+        //Adding cheked and marked spans into completedSpans array to remove when EOL is detected.
         completedSpans.push(curSpan);
 
         //Incrementing Index and finding the current highlighted word.
@@ -67,7 +67,6 @@ function userInputChanged(event) {
         /* Line Detection Implementation: Finding the current span top position and comparing with prev span top position and removing them from the completed spans array in moveUp function.*/
         if (curTopPos > prevTopPos) {
             moveUp()
-
         }
 
         //keeping track of prevSpans
@@ -164,6 +163,11 @@ btn_reset.addEventListener('click', function () {
     window.location.reload();
 });
 
+
+/*
+Calculating Words Per minute.
+
+*/
 
 
 

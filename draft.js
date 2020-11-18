@@ -38,8 +38,8 @@ check for match
 **PHASE 6
 ---
 1. Add multiple timer options
-2. calculate words per minute
-3. work on showing results properly
+2. calculate words per minute (https://www.speedtypingonline.com/typing-equations)
+3. work on printing results properly
 
 
 
