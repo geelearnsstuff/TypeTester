@@ -127,11 +127,8 @@ function printResults() {
 
 //Adding an event listener to the input field when the page loads
 function initialiseTimer() {
+    inputField.addEventListener('keyup', startTimer);
 }
-
-inputField.addEventListener('keyup', startTimer);
-
-
 
 //Starting the timer and removing the start timer event 
 function startTimer(seconds) {
