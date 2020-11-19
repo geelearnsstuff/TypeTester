@@ -133,7 +133,7 @@ function initialiseTimer() {
 //Starting the timer and removing the start timer event 
 function startTimer(seconds) {
     inputField.removeEventListener('keyup', startTimer);
-    let sec = 10;
+    let sec = 60;
     let mins = seconds > 60 ? seconds / 60 : 0;
     let cur_mins;
 
