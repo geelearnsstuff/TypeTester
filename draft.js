@@ -40,6 +40,7 @@ check for match
 1. Add multiple timer options
 2. calculate words per minute (https://www.speedtypingonline.com/typing-equations)
 3. work on printing results properly
+4. Deployed on GitHub Pages - DONE
 
 
 

@@ -16,6 +16,7 @@ let keyStrokes = 0, keyPressed, typedWord;
 generateText();
 initialiseTest();
 initialiseTimer();
+printResults();
 
 //Generating the text for the test from the random word Array
 function generateText() {
@@ -115,10 +116,21 @@ function moveUp() {
 
 //printing the results when the timer ends
 function printResults() {
-    let spans = document.createElement("span");
+    let correctWordSpan = document.createElement("span");
+    let wpmSpan = document.createElement("span");
+    let wrongWordSpan = document.createElement("span")
     let wpm = calculateWPM()
-    para.innerText = `Correct Words : ${correctWordCount} Wrong Words : ${wrongWordCount},WPM:${wpm}`;
-    results.appendChild(para)
+
+    console.log(wpm)
+
+    correctWordSpan.innerText = `Correct Words : ${correctWordCount}`;
+    wrongWordSpan.innerText = `Wrong Words : ${wrongWordCount}`;
+    wpmSpan.innerText = `WPM: ${wpm}`;
+
+    results.appendChild(correctWordSpan);
+    results.appendChild(wrongWordSpan);
+    results.appendChild(wpmSpan);
+
     inputField.value = "";
     inputField.disabled = true;
 
@@ -133,7 +145,7 @@ function initialiseTimer() {
 //Starting the timer and removing the start timer event 
 function startTimer(seconds) {
     inputField.removeEventListener('keyup', startTimer);
-    let sec = 60;
+    let sec = 5;
     let mins = seconds > 60 ? seconds / 60 : 0;
     let cur_mins;
 
